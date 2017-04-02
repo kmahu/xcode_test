@@ -40,7 +40,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
+    //randomNumbers : Generates and returns a random number between startNum and endNum
+    //Also check that endNum is greater than startNum to avoid negative numbers
+    func randomNumbers(startNum: Int, endNum :Int)->Int {
+        if (endNum < startNum){
+            return Int(arc4random_uniform(UInt32(startNum-endNum+1)))+startNum;
+        }
+        
+        return Int(arc4random_uniform(UInt32(endNum-startNum+1)))+startNum;
+    }
+    
+    
+    //chechAnswer:
+    func checkAnswer(firstNum: Int, secondNum: Int, op: String, givenAnswer: Int)-> Bool {
+        switch true {
+        case (op == "*") :
+            if (firstNum * secondNum == givenAnswer){
+             return true;
+            }
+            else{
+             return false;
+            }
+
+        default:
+            return false;
+        }
+    }
+
 
